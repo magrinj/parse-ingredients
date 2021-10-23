@@ -1,0 +1,53 @@
+{
+  "name": "parse-ingredients",
+  "version": "0.1.5",
+  "description": "Multi-language recipe ingredients parser",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "rm -rf lib && tsc",
+    "lint": "npx eslint ./ --ignore-pattern node_modules --fix --quiet",
+    "prepublish": "yarn build",
+    "test": "jest --testPathPattern=src/*",
+    "test:watch": "jest --watchAll --testPathPattern=src/*",
+    "test:ci": "yarn lint && yarn test",
+    "watch": "nodemon --watch src -e ts,tsx -x 'yarn build'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:JMagrin/parse-ingredients.git"
+  },
+  "author": "Jérémy Magrin <contact@magrin.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JMagrin/parse-ingredients.git/issues"
+  },
+  "homepage": "https://github.com/JMagrin/parse-ingredients.git#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.3",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.3.1",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-jest": "^25.2.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.3.1",
+    "prettier": "^2.4.1",
+    "tslint": "^5.10.0",
+    "typescript": "^4.4.4"
+  },
+  "keywords": [
+    "recipe",
+    "parser",
+    "ingredient",
+    "combine",
+    "units"
+  ]
+}
