@@ -18,6 +18,7 @@ export default function getUnit(data: string, options: Options): Unit | null {
   const units = locales[options.language.from].units;
   const translations = locales[options.language.to].translations;
   const symbols = locales[options.language.to].symbols;
+  let result = null;
 
   for (const key of Object.keys(units)) {
     const unit = key as keyof Locale['units'];
@@ -26,11 +27,14 @@ export default function getUnit(data: string, options: Options): Unit | null {
       // Escape all special character inside the string
       const regex = shorthand.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
       // Test if a match happen in the current input
-      const match = getFirstMatch(`${input} `, new RegExp(`^${regex}\ `));
+      const match = getFirstMatch(
+        `${input} `,
+        new RegExp(`^${regex}\ `),
+      )?.trim?.();
 
-      if (match) {
-        return {
-          match: match?.trim() ?? null,
+      if (match && (result === null || result.match.length < match?.length)) {
+        result = {
+          match: match ?? null,
           singular: translations[unit][0],
           plural: translations[unit][1],
           symbol: symbols[unit],
@@ -39,5 +43,5 @@ export default function getUnit(data: string, options: Options): Unit | null {
     }
   }
 
-  return null;
+  return result;
 }

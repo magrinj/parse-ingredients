@@ -12,6 +12,7 @@ export interface Units<T> {
   pound: T;
   quart: T;
   tablespoon: T;
+  coffeespoon: T;
   teaspoon: T;
   gram: T;
   kilogram: T;
@@ -28,6 +29,13 @@ export interface Units<T> {
   can: T;
   box: T;
   bag: T;
+  leaf: T;
+  sprig: T;
+  unit: T;
+  packet: T;
+  dose: T;
+  drop: T;
+  cube: T;
   small: T;
   medium: T;
   large: T;

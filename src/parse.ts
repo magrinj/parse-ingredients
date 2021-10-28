@@ -51,7 +51,8 @@ export default function parse(
   const unit = getUnit(restOfIngredient, options);
   // remove unit from the ingredient if one was found and trim leading and trailing whitespace
   let ingredient = unit?.match
-    ? restOfIngredient.replace(unit.match, '').trim()
+    ? // Remove unit from ingredient
+      restOfIngredient.slice(unit.match.length).trim()
     : restOfIngredient;
 
   // grab article
