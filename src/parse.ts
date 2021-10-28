@@ -37,9 +37,14 @@ export default function parse(
   /* extraInfo will be any info in parantheses. We'll place it at the end of the ingredient.
   For example: "sugar (or other sweetener)" --> extraInfo: "(or other sweetener)" */
   let extraInfo;
-  if (getFirstMatch(restOfIngredient, /\(([^\)]+)\)/)) {
-    extraInfo = getFirstMatch(restOfIngredient, /\(([^\)]+)\)/);
-    restOfIngredient = restOfIngredient.replace(extraInfo, '').trim();
+  if (getFirstMatch(restOfIngredient, /\(([^()]*)\)/)) {
+    extraInfo = getFirstMatch(restOfIngredient, /\(([^()]*)\)/);
+    restOfIngredient = restOfIngredient
+      // Remove extraInfo from ingredient
+      .replace(extraInfo, '')
+      // Clean other unwanted parentheses
+      .replace(/[()]/g, '')
+      .trim();
   }
 
   // grab unit and turn it into non-plural version, for ex: "Tablespoons" OR "Tsbp." --> "tablespoon"
