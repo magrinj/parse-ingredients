@@ -119,7 +119,7 @@ const locale: Locale = {
     medium: '',
     large: '',
   },
-  articles: ['an', 'a', 'of'],
+  articles: [/^(an) \w+/i, /^(a) \w+/i, /^(of) \w+/i],
 };
 
 export default defineLocale('en', locale);

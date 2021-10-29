@@ -142,7 +142,13 @@ const locale: Locale = {
     medium: '',
     large: '',
   },
-  articles: ['un', 'une', 'de', 'des'],
+  articles: [
+    /^(un) \w+/i,
+    /^(une) \w+/i,
+    /^(de) \w+/i,
+    /^(des) \w+/i,
+    /(d')\w+/i,
+  ],
 };
 
 export default defineLocale('fr', locale);

@@ -1,6 +1,6 @@
 {
   "name": "parse-ingredients",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Multi-language recipe ingredients parser",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

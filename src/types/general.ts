@@ -45,7 +45,7 @@ export interface Locale {
   units: Units<string[]>;
   translations: Units<[string, string]>;
   symbols: Units<string>;
-  articles: string[];
+  articles: RegExp[];
 }
 
 export interface Ingredient {
