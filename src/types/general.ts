@@ -36,6 +36,7 @@ export interface Units<T> {
   dose: T;
   drop: T;
   cube: T;
+  dosingcup: T;
   small: T;
   medium: T;
   large: T;
