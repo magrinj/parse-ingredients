@@ -49,7 +49,7 @@ const locale: Locale = {
     ],
     gram: ['grammes', 'gramme', 'gr.', 'gr', 'g.', 'g'],
     kilogram: ['kilogrammes', 'kilogramme', 'kilos', 'kilo', 'kg.', 'kg'],
-    liter: ['littres', 'littre', 'lit.', 'l.', 'l', 'L', 'L.'],
+    liter: ['litres', 'litre', 'lit.', 'l.', 'l', 'L', 'L.'],
     centiliter: ['centilitres', 'centilitre', 'cl', 'cl.'],
     milligram: ['milligrammes', 'milligramme', 'mlg.', 'mlg', 'mg.', 'mg'],
     milliliter: ['millilitres', 'millilitre', 'mlt', 'ml.', 'ml'],
