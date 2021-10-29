@@ -19,6 +19,7 @@ const locale: Locale = {
       'cas.',
       'c a s',
       'c.a s.',
+      'c.a.s',
     ],
     coffeespoon: [
       'cuilleres a cafe',
@@ -28,6 +29,7 @@ const locale: Locale = {
       'c. a cafe',
       'c.a c.',
       'c. a c.',
+      'c.a.c',
       'cac.',
       'c a c',
       'cac',
@@ -43,6 +45,7 @@ const locale: Locale = {
       'cat.',
       'c a t',
       'cat',
+      'c.a.t',
     ],
     gram: ['grammes', 'gramme', 'gr.', 'gr', 'g.', 'g'],
     kilogram: ['kilogrammes', 'kilogramme', 'kilos', 'kilo', 'kg.', 'kg'],
