@@ -1,4 +1,9 @@
+import {Options} from '../types/general';
+
+import removeAccentuation from './removeAccentuation';
 import getFirstMatch from './getFirstMatch';
+
+import locales from '../locales';
 
 const unicodeObj: {[key: string]: string} = {
   '½': '1/2',
@@ -23,10 +28,16 @@ const unicodeObj: {[key: string]: string} = {
 
 export default function findQuantityAndConvertIfUnicode(
   ingredientLine: string,
+  options: Options,
 ) {
+  const language = options.language.from;
+  const cleanedLine = removeAccentuation(ingredientLine);
   const numericAndFractionRegex = /^(\d+\/\d+)|(\d+\s\d+\/\d+)|(\d+.\d+)|\d+/g;
-  const numericRangeWithSpaceRegex =
-    /^(\d+\-\d+)|^(\d+\s\-\s\d+)|^(\d+\sto\s\d+)/g; // for ex: "1 to 2" or "1 - 2"
+  const prepositions = locales[language].prepositions.join('|'); // Get language preposition
+  const numericRangeWithSpaceRegex = new RegExp(
+    `^(\\d+\\-\\d+)|^(\\d+\\s\\-\\s\\d+)|^(\\d+\\s(${prepositions})\\s\\d+)`,
+    'g',
+  ); // for ex: "1 to 2" or "1 - 2"
   const unicodeFractionRegex = /\d*[^\u0000-\u007F]+/g;
   const onlyUnicodeFraction = /[^\u0000-\u007F]+/g;
 
@@ -50,18 +61,14 @@ export default function findQuantityAndConvertIfUnicode(
   }
 
   // found a quantity range, for ex: "2 to 3"
-  if (ingredientLine.match(numericRangeWithSpaceRegex)) {
-    const quantity = getFirstMatch(ingredientLine, numericRangeWithSpaceRegex)
-      .replace('to', '-')
+  if (cleanedLine.match(numericRangeWithSpaceRegex)) {
+    const quantity = getFirstMatch(cleanedLine, numericRangeWithSpaceRegex);
+    const cleanedQuantity = quantity
+      .replace(new RegExp(`(${prepositions})`), '-')
       .split(' ')
       .join('');
-    const restOfIngredient = ingredientLine
-      .replace(getFirstMatch(ingredientLine, numericRangeWithSpaceRegex), '')
-      .trim();
-    return [
-      ingredientLine.match(numericRangeWithSpaceRegex) && quantity,
-      restOfIngredient,
-    ];
+    const restOfIngredient = ingredientLine.slice(quantity.length).trim();
+    return [cleanedQuantity, restOfIngredient];
   }
 
   // found a numeric/fraction quantity, for example: "1 1/3"

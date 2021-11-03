@@ -148,12 +148,13 @@ const locale: Locale = {
     medium: '',
     large: '',
   },
+  prepositions: ['a', 'ou'],
   articles: [
     /^(un) \w+/i,
     /^(une) \w+/i,
     /^(de) \w+/i,
     /^(des) \w+/i,
-    /(d')\w+/i,
+    /^(d') ?\w+/i,
   ],
 };
 

@@ -129,6 +129,7 @@ const locale: Locale = {
     medium: '',
     large: '',
   },
+  prepositions: ['to'],
   articles: [/^(an) \w+/i, /^(a) \w+/i, /^(of) \w+/i],
 };
 

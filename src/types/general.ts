@@ -46,6 +46,7 @@ export interface Locale {
   units: Units<string[]>;
   translations: Units<[string, string]>;
   symbols: Units<string>;
+  prepositions: string[];
   articles: RegExp[];
 }
 

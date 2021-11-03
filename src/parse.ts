@@ -30,6 +30,7 @@ export default function parse(
   For example: "1 pinch salt" --> quantity: 1, restOfIngredient: pinch salt */
   let [quantity, restOfIngredient] = findQuantityAndConvertIfUnicode(
     ingredientLine,
+    options,
   ) as string[];
 
   quantity = convertFromFraction(quantity);
