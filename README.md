@@ -1,3 +1,7 @@
+<a href="https://www.linkedin.com/in/jeremy-magrin/">
+  <img src=".github/assets/parse-ingredients-banner.jpg" alt="@magrinj/parse-ingredients" width="100%" />
+</a>
+
 # @magrinj/parse-ingredients
 
 [![npm version](https://img.shields.io/npm/v/@magrinj/parse-ingredients.svg)](https://www.npmjs.com/package/@magrinj/parse-ingredients)
