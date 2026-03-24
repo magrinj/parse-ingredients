@@ -1,8 +1,8 @@
-import {Options, Ingredient} from './types/general';
+import { Options, Ingredient } from './types/general';
 
 import convertFromFraction from './utils/convertFromFraction';
 import getFirstMatch from './utils/getFirstMatch';
-import findQuantityAndConvertIfUnicode from './utils/findQuantityAndCovertIfUnicode';
+import findQuantityAndConvertIfUnicode from './utils/findQuantityAndConvertIfUnicode';
 import getUnit from './utils/unit';
 import getArticle from './utils/article';
 
@@ -69,9 +69,9 @@ export default function parse(
     [minQty, maxQty] = quantity.split('-');
   }
 
-  // @ts-ignore
-  if (!isNaN(maxQty)) {
-    plural = parseFloat(maxQty) > 1;
+  const parsedMax = parseFloat(maxQty);
+  if (!isNaN(parsedMax)) {
+    plural = parsedMax > 1;
   }
 
   return {

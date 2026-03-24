@@ -1,5 +1,5 @@
-import {Locale} from '../types/general';
-import {defineLocale} from '../locales';
+import { Locale } from '../types/general';
+import { defineLocale } from '../locales';
 
 const locale: Locale = {
   units: {
@@ -63,7 +63,7 @@ const locale: Locale = {
     pound: ['pound', 'pounds'],
     quart: ['quart', 'quarts'],
     tablespoon: ['tablespoon', 'tablespoons'],
-    coffeespoon: ['teaspoon', 'teaspoons'],
+    coffeespoon: ['coffeespoon', 'coffeespoons'],
     teaspoon: ['teaspoon', 'teaspoons'],
     gram: ['gram', 'grams'],
     kilogram: ['kilogram', 'kilograms'],
@@ -74,7 +74,7 @@ const locale: Locale = {
     package: ['package', 'packages'],
     stick: ['stick', 'sticks'],
     piece: ['piece', 'pieces'],
-    pinch: ['pinch', 'pinchs'],
+    pinch: ['pinch', 'pinches'],
     clove: ['clove', 'cloves'],
     slice: ['slice', 'slices'],
     can: ['can', 'cans'],
@@ -100,7 +100,7 @@ const locale: Locale = {
     pound: 'lb',
     quart: 'qt',
     tablespoon: 'tbs',
-    coffeespoon: 'tbs',
+    coffeespoon: 'csp',
     teaspoon: 'tsp',
     gram: 'g',
     kilogram: 'kg',

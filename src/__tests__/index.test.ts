@@ -1,4 +1,4 @@
-import parse, {combine, pretty} from '../index';
+import parse, { combine, pretty } from '../index';
 
 describe('ingredient parser', () => {
   describe('translates the quantity', () => {
@@ -408,7 +408,7 @@ describe('ingredient parser', () => {
       expect(parse('1 milliliters water').unit).toBe('milliliter');
     });
     it('"1 pinch water"', () => {
-      expect(parse('2 pinches salt').unit).toBe('pinchs');
+      expect(parse('2 pinches salt').unit).toBe('pinches');
     });
   });
 

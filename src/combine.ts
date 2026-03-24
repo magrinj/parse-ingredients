@@ -1,4 +1,4 @@
-import {Ingredient} from './types/general';
+import { Ingredient } from './types/general';
 
 // TODO: Maybe change this to existingIngredients: Ingredient | Ingredient[]
 function combineTwoIngredients(
@@ -23,7 +23,7 @@ function combineTwoIngredients(
           Number(existingIngredients.maxQty) + Number(ingredient.maxQty)
         ).toString()
       : null;
-  return Object.assign({}, existingIngredients, {quantity, minQty, maxQty});
+  return Object.assign({}, existingIngredients, { quantity, minQty, maxQty });
 }
 
 function compareIngredients(a: Ingredient, b: Ingredient) {
@@ -34,18 +34,21 @@ function compareIngredients(a: Ingredient, b: Ingredient) {
 }
 
 export default function combine(ingredientArray: Ingredient[]) {
-  const combinedIngredients = ingredientArray.reduce((acc, ingredient) => {
-    const key = ingredient.ingredient + ingredient.unit; // when combining different units, remove this from the key and just use the name
-    const existingIngredient = acc[key];
+  const combinedIngredients = ingredientArray.reduce(
+    (acc, ingredient) => {
+      const key = ingredient.ingredient + ingredient.unit; // when combining different units, remove this from the key and just use the name
+      const existingIngredient = acc[key];
 
-    if (existingIngredient) {
-      return Object.assign(acc, {
-        [key]: combineTwoIngredients(existingIngredient, ingredient),
-      });
-    } else {
-      return Object.assign(acc, {[key]: ingredient});
-    }
-  }, {} as {[key: string]: Ingredient});
+      if (existingIngredient) {
+        return Object.assign(acc, {
+          [key]: combineTwoIngredients(existingIngredient, ingredient),
+        });
+      } else {
+        return Object.assign(acc, { [key]: ingredient });
+      }
+    },
+    {} as { [key: string]: Ingredient },
+  );
 
   return Object.keys(combinedIngredients)
     .reduce((acc, key) => {

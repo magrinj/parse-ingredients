@@ -1,4 +1,4 @@
-import {Locale, Options} from '../types/general';
+import { Locale, Options } from '../types/general';
 
 import removeAccentuation from './removeAccentuation';
 import getFirstMatch from './getFirstMatch';
@@ -29,7 +29,7 @@ export default function getUnit(data: string, options: Options): Unit | null {
       // Test if a match happen in the current input
       const match = getFirstMatch(
         `${input} `,
-        new RegExp(`^${regex}\ `),
+        new RegExp(`^${regex} `),
       )?.trim?.();
 
       if (match && (result === null || result.match.length < match?.length)) {

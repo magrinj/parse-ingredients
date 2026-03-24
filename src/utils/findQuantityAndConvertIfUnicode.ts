@@ -1,11 +1,11 @@
-import {Options} from '../types/general';
+import { Options } from '../types/general';
 
 import removeAccentuation from './removeAccentuation';
 import getFirstMatch from './getFirstMatch';
 
 import locales from '../locales';
 
-const unicodeObj: {[key: string]: string} = {
+const unicodeObj: { [key: string]: string } = {
   '½': '1/2',
   '⅓': '1/3',
   '⅔': '2/3',
@@ -32,14 +32,14 @@ export default function findQuantityAndConvertIfUnicode(
 ) {
   const language = options.language.from;
   const cleanedLine = removeAccentuation(ingredientLine);
-  const numericAndFractionRegex = /^(\d+\/\d+)|(\d+\s\d+\/\d+)|(\d+.\d+)|\d+/g;
+  const numericAndFractionRegex = /(\d+\s\d+\/\d+)|(\d+\/\d+)|(\d+\.\d+)|\d+/g;
   const prepositions = locales[language].prepositions.join('|'); // Get language preposition
   const numericRangeWithSpaceRegex = new RegExp(
     `^(\\d+\\-\\d+)|^(\\d+\\s\\-\\s\\d+)|^(\\d+\\s(${prepositions})\\s\\d+)`,
     'g',
   ); // for ex: "1 to 2" or "1 - 2"
-  const unicodeFractionRegex = /\d*[^\u0000-\u007F]+/g;
-  const onlyUnicodeFraction = /[^\u0000-\u007F]+/g;
+  const unicodeFractionRegex = /\d*[^\u0020-\u007F]+/g;
+  const onlyUnicodeFraction = /[^\u0020-\u007F]+/g;
 
   // found a unicode quantity inside our regex, for ex: '⅝'
   if (ingredientLine.match(unicodeFractionRegex)) {

@@ -12,7 +12,7 @@ A multi-language recipe ingredient parser. Parse, combine, and format ingredient
 
 ## Why this library?
 
-- **Multi-language support** — 6 languages built-in: English, French, Spanish, Italian, German, and Portuguese. Extensible locale system makes adding new languages straightforward.
+- **Multi-language support** — The only maintained npm package that parses French recipe ingredients natively. Extensible locale system makes adding new languages straightforward.
 - **Parse + Combine + Pretty** — Three complementary functions for the full ingredient workflow: parse strings into structured objects, combine duplicates across recipes, and format them back into readable text.
 - **Zero runtime dependencies** — Pure TypeScript, lightweight and fast. Nothing to audit, nothing to worry about.
 
@@ -130,10 +130,6 @@ interface Options {
 |----------|-------------|--------|
 | English | `en` | Default (no import needed) |
 | French | `fr` | `import '@magrinj/parse-ingredients/locale/fr'` |
-| Spanish | `es` | `import '@magrinj/parse-ingredients/locale/es'` |
-| Italian | `it` | `import '@magrinj/parse-ingredients/locale/it'` |
-| German | `de` | `import '@magrinj/parse-ingredients/locale/de'` |
-| Portuguese | `pt` | `import '@magrinj/parse-ingredients/locale/pt'` |
 
 ## Documentation
 
@@ -149,7 +145,7 @@ If you find this library useful, consider supporting its development:
 
 ## License
 
-[MIT](LICENSE)
+[MIT](_media/LICENSE)
 
 ---
 

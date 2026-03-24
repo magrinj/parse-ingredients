@@ -1,53 +1,114 @@
 {
-  "name": "parse-ingredients",
-  "version": "0.2.8",
-  "description": "Multi-language recipe ingredients parser",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "name": "@magrinj/parse-ingredients",
+  "version": "1.0.0",
+  "description": "A multi-language recipe ingredient parser. Parse, combine, and format ingredients with zero dependencies.",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.mjs",
+  "types": "./lib/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.mts",
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs"
+    },
+    "./locale/*": {
+      "types": "./lib/locale/*.d.mts",
+      "import": "./lib/locale/*.mjs",
+      "require": "./lib/locale/*.cjs"
+    }
+  },
+  "files": [
+    "lib",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": false,
   "scripts": {
-    "build": "rm -rf lib && tsc",
-    "lint": "npx eslint ./ --ignore-pattern node_modules --fix --quiet",
-    "prepublish": "yarn build",
+    "build": "tsdown --no-exports",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write src/",
+    "typecheck": "tsc --noEmit",
     "test": "jest --testPathPattern=src/*",
     "test:watch": "jest --watchAll --testPathPattern=src/*",
-    "test:ci": "yarn lint && yarn test",
-    "watch": "nodemon --watch src -e ts,tsx -x 'yarn build'"
+    "test:ci": "bun run lint && bun run typecheck && bun run test",
+    "watch": "tsc --watch",
+    "prepublishOnly": "bun run build",
+    "release": "release-it",
+    "docs": "cd website && bun run build"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:JMagrin/parse-ingredients.git"
+    "url": "https://github.com/magrinj/parse-ingredients.git"
   },
   "author": "Jérémy Magrin <contact@magrin.fr>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JMagrin/parse-ingredients.git/issues"
+    "url": "https://github.com/magrinj/parse-ingredients/issues"
   },
-  "homepage": "https://github.com/JMagrin/parse-ingredients.git#readme",
+  "homepage": "https://magrinj.github.io/parse-ingredients/",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
-    "@babel/preset-typescript": "^7.15.0",
-    "@types/jest": "^27.0.2",
-    "@types/node": "^16.11.3",
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^27.3.1",
-    "eslint": "^8.1.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-jest": "^25.2.2",
-    "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^27.3.1",
-    "prettier": "^2.4.1",
-    "tslint": "^5.10.0",
-    "typescript": "^4.4.4"
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@release-it/conventional-changelog": "^9.0.0",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "babel-jest": "^29.7.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^10.0.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.0.0",
+    "release-it": "^18.0.0",
+    "tsdown": "^0.21.4",
+    "typescript": "~5.7.0",
+    "typescript-eslint": "^8.0.0"
   },
   "keywords": [
     "recipe",
     "parser",
     "ingredient",
+    "ingredients",
+    "french",
+    "english",
+    "multilingual",
+    "cooking",
+    "food",
+    "recipe-parser",
+    "ingredient-parser",
+    "parse-ingredients",
+    "zero-dependencies",
     "combine",
-    "units"
-  ]
+    "units",
+    "kitchen",
+    "nutrition"
+  ],
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}",
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": true,
+      "publishArgs": [
+        "--access public",
+        "--provenance"
+      ]
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md"
+      }
+    }
+  }
 }

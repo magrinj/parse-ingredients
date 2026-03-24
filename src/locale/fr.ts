@@ -1,5 +1,5 @@
-import {Locale} from '../types/general';
-import {defineLocale} from '../locales';
+import { Locale } from '../types/general';
+import { defineLocale } from '../locales';
 
 const locale: Locale = {
   units: {
@@ -86,7 +86,7 @@ const locale: Locale = {
     teaspoon: ['cuillère à thé', 'cuillères à thé'],
     gram: ['gramme', 'grammes'],
     kilogram: ['kilogramme', 'kilogrammes'],
-    liter: ['littre', 'littres'],
+    liter: ['litre', 'litres'],
     centiliter: ['centilitre', 'centilitres'],
     milligram: ['milligramme', 'milligrammes'],
     milliliter: ['millilitre', 'millilitres'],

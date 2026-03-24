@@ -4,4 +4,4 @@ export const repeatingFractions = {
   [111]: '1/9',
   [166]: '1/6',
   [833]: '5/6',
-} as {[key: string]: string};
+} as { [key: string]: string };

@@ -1,7 +1,8 @@
 function keepThreeDecimals(val: number) {
   const strVal = val.toString();
+  const parts = strVal.split('.');
 
-  return strVal.split('.')[0] + '.' + strVal.split('.')[1].substring(0, 3);
+  return parts[1] ? parts[0] + '.' + parts[1].substring(0, 3) : parts[0];
 }
 
 export default function convertFromFraction(value: string) {

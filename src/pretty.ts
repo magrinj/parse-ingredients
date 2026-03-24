@@ -1,6 +1,6 @@
-import {repeatingFractions} from './utils/constants';
+import { repeatingFractions } from './utils/constants';
 
-import {Ingredient} from './types/general';
+import { Ingredient } from './types/general';
 
 function gcd(a: number, b: number): number {
   if (b < 0.0000001) {
@@ -12,7 +12,7 @@ function gcd(a: number, b: number): number {
 
 export default function pretty(ingredient: Ingredient) {
   let quantity = '';
-  let unit = ingredient.unit;
+  const unit = ingredient.unit;
   if (ingredient.quantity) {
     const [whole, remainder] = ingredient.quantity.split('.');
     if (+whole !== 0 && typeof whole !== 'undefined') {

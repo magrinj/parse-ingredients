@@ -1,4 +1,4 @@
-import {Options} from '../types/general';
+import { Options } from '../types/general';
 
 import removeAccentuation from './removeAccentuation';
 
@@ -23,5 +23,5 @@ export default function getArticle(
     }
   }
 
-  return [null, input];
+  return [null, trimmedData];
 }
